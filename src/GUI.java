@@ -98,8 +98,7 @@ public class GUI extends JPanel implements ActionListener, ChangeListener {
 				start.setEnabled(true);
 				board.clear();
 				frame.setTitle("Cellular Automata Toolbox");
-			} 
-
+			}
 		}
 	}
 

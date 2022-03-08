@@ -67,6 +67,7 @@ public class Board extends JComponent implements MouseInputListener, ComponentLi
 			for (int y = 0; y < points[x].length; ++y)
 				points[x][y] = new Point();
 
+		//initializing the neighborhood of points[x][y] cell
 		if(rain){
 			for (int x = 0; x < points.length; ++x) {
 				for (int y = 1; y < points[x].length; ++y) {
@@ -77,16 +78,15 @@ public class Board extends JComponent implements MouseInputListener, ComponentLi
 		else{
 			for (int x = 0; x < points.length; ++x) {
 				for (int y = 0; y < points[x].length; ++y) {
-					//TODO: initialize the neighborhood of points[x][y] cell
 					if(x>0){
 						points[x][y].addNeighbor(points[x-1][y]);
 						if(y>0){points[x][y].addNeighbor(points[x-1][y-1]);}
 						if(y< points[x].length-1){points[x][y].addNeighbor(points[x-1][y+1]);}
 					}
-					if(x<points.length){
+					if(x<points.length-1){
 						points[x][y].addNeighbor(points[x+1][y]);
 						if(y>0){points[x][y].addNeighbor(points[x+1][y-1]);}
-						if(y< points[x].length-1){points[x][y].addNeighbor(points[x+1][y+1]);}
+						if(y<points[x].length-1){points[x][y].addNeighbor(points[x+1][y+1]);}
 					}
 				}
 			}
@@ -128,22 +128,22 @@ public class Board extends JComponent implements MouseInputListener, ComponentLi
 				if (points[x][y].getState() != 0) {
 					switch (points[x][y].getState()) {
 					case 1:
-						g.setColor(new Color(0.0f, 0.0f, 1.0f, 1f));
+						g.setColor(new Color(0.0f, 0.0f, 1.0f, 0.2f));
 						break;
 					case 2:
-						g.setColor(new Color(0.0f, 0.0f, 1.0f, 0.84f));
+						g.setColor(new Color(0.0f, 0.0f, 1.0f, 0.36f));
 						break;
 					case 3:
-						g.setColor(new Color(0.0f, 0.0f, 1.0f, 0.68f));
-						break;						
-					case 4:
 						g.setColor(new Color(0.0f, 0.0f, 1.0f, 0.52f));
 						break;						
+					case 4:
+						g.setColor(new Color(0.0f, 0.0f, 1.0f, 0.68f));
+						break;						
 					case 5:
-						g.setColor(new Color(0.0f, 0.0f, 1.0f, 0.36f));
+						g.setColor(new Color(0.0f, 0.0f, 1.0f, 0.84f));
 						break;						
 					case 6:
-						g.setColor(new Color(0.0f, 0.0f, 1.0f, 0.20f));
+						g.setColor(new Color(0.0f, 0.0f, 1.0f, 1f));
 						break;						
 					}
 					g.fillRect((x * size) + 1, (y * size) + 1, (size - 1), (size - 1));

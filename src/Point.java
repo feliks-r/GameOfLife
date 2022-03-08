@@ -27,11 +27,32 @@ public class Point {
 	}
 
 	public void calculateNewState() {
-		//TODO: insert logic which updates according to currentState and 
+		//updates according to currentState and
 		//number of active neighbors
 
 		int activeNeighbors = countActiveNeighbors();
+
+		//game of life
+		/*
 		if (activeNeighbors == 3 || (currentState == 1 && activeNeighbors == 2)){
+			nextState = 1;
+		}
+		else{
+			nextState = 0;
+		}*/
+
+		//cities
+		/*if ((currentState == 1 && activeNeighbors >= 2 && activeNeighbors <= 5) ||
+				(currentState == 0 && activeNeighbors >= 4 && activeNeighbors <= 8)){
+			nextState = 1;
+		}
+		else{
+			nextState = 0;
+		}*/
+
+		//coral
+		if ((currentState == 1 && activeNeighbors >= 4 && activeNeighbors <= 8) ||
+				(currentState == 0 && activeNeighbors == 3)){
 			nextState = 1;
 		}
 		else{
@@ -40,6 +61,7 @@ public class Point {
 	}
 
 	public void calculateRainState(){
+		//calculates new state for rain
 		if(currentState>0){
 			nextState=(--currentState)%numStates;
 		}
